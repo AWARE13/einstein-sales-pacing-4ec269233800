@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>August 2026 Sales Pacing</title>
+<style>
+  html, body { margin:0; padding:0; background:#f9f9f7; }
+  @media (prefers-color-scheme: dark){ html, body { background:#0d0d0d; } }
+</style>
+</head>
+<body>
+<style>
+  .pacing-root{
+    --page:#f9f9f7; --surface:#fcfcfb; --surface-raised:#ffffff;
+    --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+    --grid:#e1e0d9; --baseline:#c3c2b7; --border:rgba(11,11,11,0.10);
+    --accent:#E8630A; --accent-ink:#ffffff; --navy:#16213E;
+    --good:#0ca30c; --good-deep:#086b08;
+    --warn:#c98200; --crit:#d03b3b;
+    --good-bg:rgba(12,163,12,0.10); --good-deep-bg:rgba(8,107,8,0.13);
+    --warn-bg:rgba(201,130,0,0.12); --crit-bg:rgba(208,59,59,0.10);
+    color-scheme: light;
+    font-family: 'Roboto', -apple-system, 'Segoe UI', Arial, sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    padding: 28px clamp(16px,4vw,48px) 64px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  @media (prefers-color-scheme: dark){
+    .pacing-root{
+      --page:#0d0d0d; --surface:#1a1a19; --surface-raised:#221f1c;
+      --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#898781;
+      --grid:#2c2c2a; --baseline:#383835; --border:rgba(255,255,255,0.10);
+      --accent:#FF7A3D; --accent-ink:#1a1004; --navy:#8A9BD6;
+      --good:#26c281; --good-deep:#5EE6A6;
+      --warn:#f5b942; --crit:#f0716d;
+      --good-bg:rgba(38,194,129,0.14); --good-deep-bg:rgba(94,230,166,0.16);
+      --warn-bg:rgba(245,185,66,0.14); --crit-bg:rgba(240,113,109,0.14);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] .pacing-root{
+    --page:#0d0d0d; --surface:#1a1a19; --surface-raised:#221f1c;
+    --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#898781;
+    --grid:#2c2c2a; --baseline:#383835; --border:rgba(255,255,255,0.10);
+    --accent:#FF7A3D; --accent-ink:#1a1004; --navy:#8A9BD6;
+    --good:#26c281; --good-deep:#5EE6A6;
+    --warn:#f5b942; --crit:#f0716d;
+    --good-bg:rgba(38,194,129,0.14); --good-deep-bg:rgba(94,230,166,0.16);
+    --warn-bg:rgba(245,185,66,0.14); --crit-bg:rgba(240,113,109,0.14);
+    color-scheme: dark;
+  }
+  :root[data-theme="light"] .pacing-root{
+    --page:#f9f9f7; --surface:#fcfcfb; --surface-raised:#ffffff;
+    --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+    --grid:#e1e0d9; --baseline:#c3c2b7; --border:rgba(11,11,11,0.10);
+    --accent:#E8630A; --accent-ink:#ffffff; --navy:#16213E;
+    --good:#0ca30c; --good-deep:#086b08;
+    --warn:#c98200; --crit:#d03b3b;
+    --good-bg:rgba(12,163,12,0.10); --good-deep-bg:rgba(8,107,8,0.13);
+    --warn-bg:rgba(201,130,0,0.12); --crit-bg:rgba(208,59,59,0.10);
+    color-scheme: light;
+  }
+
+  .pacing-root *{ box-sizing: border-box; }
+  .pacing-root h1, .pacing-root h2, .pacing-root h3 { text-wrap: balance; margin: 0; }
+  .pacing-root ::selection{ background: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- header ---------- */
+  .p-eyebrow{
+    display:flex; align-items:center; gap:8px;
+    font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color: var(--accent); margin-bottom:10px;
+  }
+  .p-eyebrow::before{
+    content:""; width:8px; height:8px; border-radius:50%; background:var(--accent);
+  }
+  h1.p-title{ font-size: clamp(24px,3.4vw,34px); font-weight:900; letter-spacing:-0.01em; }
+  .p-sub{ margin-top:8px; color:var(--ink-2); font-size:15px; line-height:1.5; max-width:70ch; }
+  .p-sub b{ color:var(--ink); font-variant-numeric: tabular-nums; }
+
+  .p-callout{
+    margin-top:20px; padding:14px 18px; border-radius:10px;
+    background: var(--surface-raised); border:1px solid var(--border);
+    font-size:13.5px; line-height:1.6; color:var(--ink-2);
+  }
+  .p-callout b{ color:var(--ink); }
+  .p-callout .p-legend-row{
+    display:flex; flex-wrap:wrap; gap:14px; margin-top:10px;
+  }
+  .p-legend-chip{ display:flex; align-items:center; gap:7px; font-size:13px; color:var(--ink); }
+  .p-swatch{ width:12px; height:12px; border-radius:3px; flex:none; }
+
+  .p-warn-callout{
+    margin-top:14px; padding:14px 18px; border-radius:10px;
+    background: var(--warn-bg); border:1px solid var(--warn);
+    font-size:13.5px; line-height:1.6; color:var(--ink);
+  }
+  .p-warn-callout .p-wc-head{ font-weight:800; color:var(--warn); font-size:12px; letter-spacing:.05em; text-transform:uppercase; }
+  .p-nt-list{ margin:8px 0 0; padding-left:20px; }
+  .p-nt-list li{ margin:2px 0; font-variant-numeric: tabular-nums; }
+
+  /* ---------- summary tiles ---------- */
+  .p-tiles{
+    display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap:10px; margin-top:26px;
+  }
+  .p-tile{
+    background:var(--surface-raised); border:1px solid var(--border); border-radius:12px;
+    padding:14px 16px;
+  }
+  .p-tile.is-contest{ border-color:var(--accent); }
+  .p-tile .p-tile-label{ font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3); }
+  .p-tile.is-contest .p-tile-label{ color:var(--accent); }
+  .p-tile .p-tile-value{ font-size:24px; font-weight:800; margin-top:4px; font-variant-numeric: tabular-nums; }
+  .p-tile .p-tile-sub{ font-size:12px; color:var(--ink-2); margin-top:2px; font-variant-numeric: tabular-nums; }
+
+  .p-status-tiles{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+  .p-status-tile{
+    flex:1 1 130px; border-radius:12px; padding:12px 14px; cursor:pointer;
+    border:1.5px solid transparent; background:var(--surface-raised);
+    transition: transform .12s ease, border-color .12s ease;
+  }
+  .p-status-tile:hover{ transform: translateY(-1px); }
+  .p-status-tile.is-active{ border-color: currentColor; }
+  .p-status-tile .p-st-count{ font-size:22px; font-weight:900; font-variant-numeric: tabular-nums; }
+  .p-status-tile .p-st-label{ font-size:12px; font-weight:700; margin-top:2px; }
+  .p-status-tile.tier-superGreen{ background:var(--good-deep-bg); color:var(--good-deep); }
+  .p-status-tile.tier-green{ background:var(--good-bg); color:var(--good); }
+  .p-status-tile.tier-yellow{ background:var(--warn-bg); color:var(--warn); }
+  .p-status-tile.tier-red{ background:var(--crit-bg); color:var(--crit); }
+
+  /* ---------- controls ---------- */
+  .p-controls{
+    display:flex; gap:10px; align-items:center; margin-top:24px; flex-wrap:wrap;
+  }
+  .p-viewtoggle{ display:flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  .p-viewtoggle button{
+    font-family:inherit; font-size:13px; font-weight:600; padding:9px 14px; border:none;
+    background:var(--surface-raised); color:var(--ink-2); cursor:pointer;
+  }
+  .p-viewtoggle button.is-on{ background:var(--accent); color:var(--accent-ink); }
+
+  .p-regiontoggle{ display:flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  .p-regiontoggle button{
+    font-family:inherit; font-size:13px; font-weight:600; padding:9px 14px; border:none;
+    background:var(--surface-raised); color:var(--ink-2); cursor:pointer;
+  }
+  .p-regiontoggle button.is-on{ background:var(--navy); color:#ffffff; }
+
+  .p-contestbtn{
+    font-family:inherit; font-size:13px; font-weight:700; padding:9px 14px; cursor:pointer;
+    border:1px solid var(--accent); border-radius:8px;
+    background:var(--surface-raised); color:var(--accent);
+  }
+  .p-contestbtn.is-on{ background:var(--accent); color:var(--accent-ink); }
+
+  .p-region-summary{
+    display:none; margin-top:14px; padding:10px 16px; border-radius:10px;
+    background: var(--surface-raised); border:1px solid var(--border);
+    font-size:13px; color:var(--ink-2);
+  }
+  .p-region-summary.is-visible{ display:block; }
+  .p-region-summary b{ color:var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* ---------- bar chart ---------- */
+  .p-chart{ margin-top:18px; }
+  .p-row{
+    display:grid; grid-template-columns: 168px 1fr 74px 44px; align-items:center;
+    gap:12px; padding:6px 0; border-bottom:1px solid var(--grid);
+    position:relative;
+  }
+  .p-row:last-child{ border-bottom:none; }
+  .p-row .p-name{
+    font-size:13.5px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .p-track{
+    position:relative; height:22px; background:var(--grid); border-radius:5px; overflow:visible;
+  }
+  .p-target-line{
+    position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--ink);
+    opacity:.55; left:calc(100% / 1.5);
+  }
+  .p-bar{
+    position:absolute; top:0; bottom:0; left:0; border-radius:5px;
+    min-width:3px;
+  }
+  .p-bar.tier-superGreen{ background:var(--good-deep); }
+  .p-bar.tier-green{ background:var(--good); }
+  .p-bar.tier-yellow{ background:var(--warn); }
+  .p-bar.tier-red{ background:var(--crit); }
+  .p-pct{
+    font-size:13px; font-weight:700; text-align:right; font-variant-numeric: tabular-nums;
+  }
+  .p-row[data-tier="superGreen"] .p-pct{ color:var(--good-deep); }
+  .p-row[data-tier="green"] .p-pct{ color:var(--good); }
+  .p-row[data-tier="yellow"] .p-pct{ color:var(--warn); }
+  .p-row[data-tier="red"] .p-pct{ color:var(--crit); }
+  .p-flag{ font-size:15px; text-align:center; line-height:1; }
+
+  .p-tip{
+    position:absolute; z-index:5; bottom:calc(100% + 8px); left:0;
+    background:var(--ink); color:var(--page); border-radius:8px; padding:10px 12px;
+    font-size:12.5px; line-height:1.55; width:max-content; max-width:300px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    opacity:0; pointer-events:none; transform:translateY(4px);
+    transition:opacity .12s ease, transform .12s ease;
+  }
+  .p-row:hover .p-tip, .p-row:focus-within .p-tip{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  .p-tip b{ font-variant-numeric: tabular-nums; }
+  .p-tip .p-tip-tier{ display:inline-block; margin-top:4px; font-weight:700; }
+
+  .p-chart-axis{
+    display:grid; grid-template-columns: 168px 1fr 74px 44px; gap:12px; margin-top:6px;
+    font-size:11px; color:var(--ink-3);
+  }
+  .p-chart-axis .p-axis-track{ position:relative; height:14px; }
+  .p-chart-axis .p-axis-tick{ position:absolute; top:0; transform:translateX(-50%); }
+
+  .p-hidden{ display:none !important; }
+
+  /* ---------- table view ---------- */
+  .p-table-wrap{ margin-top:18px; overflow-x:auto; border:1px solid var(--border); border-radius:10px; }
+  table.p-table{ width:100%; border-collapse:collapse; font-size:13px; min-width:900px; }
+  table.p-table th{
+    text-align:left; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--ink-3); padding:10px 14px; border-bottom:1px solid var(--grid); background:var(--surface);
+    position:sticky; top:0;
+  }
+  table.p-table td{
+    padding:9px 14px; border-bottom:1px solid var(--grid); font-variant-numeric: tabular-nums;
+    background:var(--surface-raised);
+  }
+  table.p-table td.p-td-name{ font-variant-numeric: normal; font-weight:600; }
+  table.p-table tr:last-child td{ border-bottom:none; }
+  .p-chip{
+    display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:700;
+    padding:2px 8px; border-radius:999px;
+  }
+  .p-chip.tier-superGreen{ background:var(--good-deep-bg); color:var(--good-deep); }
+  .p-chip.tier-green{ background:var(--good-bg); color:var(--good); }
+  .p-chip.tier-yellow{ background:var(--warn-bg); color:var(--warn); }
+  .p-chip.tier-red{ background:var(--crit-bg); color:var(--crit); }
+  .p-conv-low{ color:var(--crit); }
+  .p-conv-ok{ color:var(--good); font-weight:700; }
+
+  /* ---------- footer ---------- */
+  .p-foot{ margin-top:28px; font-size:12px; color:var(--ink-3); line-height:1.6; }
+  .p-foot a{ color: inherit; }
+
+  @media (max-width: 620px){
+    .p-row{ grid-template-columns: 100px 1fr 50px 30px; }
+    .p-chart-axis{ grid-template-columns: 100px 1fr 50px 30px; }
+  }
+</style>
+
+<div class="pacing-root">
+
+  <div class="p-eyebrow">Sales Dashboard · EMMA V4</div>
+  <h1 class="p-title">Individual Sales Pacing — August 2026</h1>
+  <p class="p-sub">
+    Period <b>Aug 1 – Aug 31, 2026</b> · today is <b>Aug 14</b> — day <b>14 of 31</b>
+    (<b>45.2%</b> of the month elapsed) · 31 quota-carrying reps.
+  </p>
+
+  <div class="p-callout">
+    <b>Why this is a month, not a quarter</b> — Q3 goals are only loaded in EMMA through August.
+    Pulling Aug 1 – Oct 31 returns quarter targets that don't add up to three months of monthly goals
+    (a rep on a $52,500 August goal shows just $94,500 for the whole quarter), so a quarterly view would
+    understate targets and flatter everyone's pace. This report runs on the August window only and will
+    move to a full quarterly view once Sept and Oct goals are entered.
+    <div class="p-legend-row">
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good-deep)"></span>Super Green — already hit goal</span>
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good)"></span>Green — pace clears what's needed</span>
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--warn)"></span>Yellow — behind, but within reach</span>
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--crit)"></span>Red — pace falls well short, needs attention now</span>
+    </div>
+  </div>
+
+  <div class="p-callout">
+    <b>How the color is decided</b> — bar length is each rep's <b>% of August goal booked so far</b>.
+    Color is a <i>projection</i>: their average weekly booking pace over the 14 days elapsed
+    (Aug 1–14), compared against EMMA's Weekly Run Rate — the $/week they'd still need over the
+    remaining 17 days (Aug 15–31) to close the gap.
+    <br><br>
+    <b>🏁 The Long Haul column</b> — August is the first Monthly Pit Stop round. The flag marks reps
+    currently clearing <i>both</i> contest gates: on pace to hit their sales goal (green or better)
+    <b>and</b> at or above 20% weighted conversion. Conversion here is EMMA's
+    <b>Conversion Rate ($ SQL)</b> — the dollar-weighted figure, which is the closest match to
+    "weighted conversion" in the contest rules. Worth confirming that's the intended metric before
+    anything is announced as official.
+  </div>
+
+  <div class="p-tiles">
+    <div class="p-tile">
+      <div class="p-tile-label">Company Booked</div>
+      <div class="p-tile-value">$1.15M</div>
+      <div class="p-tile-sub">of $2.50M goal · 46.2%</div>
+    </div>
+    <div class="p-tile">
+      <div class="p-tile-label">Your Team Booked</div>
+      <div class="p-tile-value">$0.97M</div>
+      <div class="p-tile-sub">of $2.07M goal · 46.8%</div>
+    </div>
+    <div class="p-tile">
+      <div class="p-tile-label">Cancellation Rate</div>
+      <div class="p-tile-value">9.0%</div>
+      <div class="p-tile-sub">company, booking-date basis</div>
+    </div>
+    <div class="p-tile">
+      <div class="p-tile-label">Reps Behind Pace</div>
+      <div class="p-tile-value" id="p-behind-count">–</div>
+      <div class="p-tile-sub">yellow + red, of 31</div>
+    </div>
+    <div class="p-tile is-contest">
+      <div class="p-tile-label">🏁 Long Haul Track</div>
+      <div class="p-tile-value" id="p-contest-count">–</div>
+      <div class="p-tile-sub">clearing goal pace + 20% conv.</div>
+    </div>
+  </div>
+
+  <div class="p-status-tiles" id="p-status-tiles"></div>
+
+  <div class="p-controls">
+    <div class="p-regiontoggle" id="p-region-toggle">
+      <button data-region="all" class="is-on">All Regions</button>
+      <button data-region="CTX">CTX</button>
+      <button data-region="DFWT">DFWT</button>
+      <button data-region="CET">CET</button>
+    </div>
+    <button class="p-contestbtn" id="p-contest-btn">🏁 Long Haul eligible only</button>
+    <div class="p-viewtoggle">
+      <button id="p-view-chart" class="is-on">Chart</button>
+      <button id="p-view-table">Table</button>
+    </div>
+  </div>
+
+  <div class="p-region-summary" id="p-region-summary"></div>
+
+  <div class="p-chart-axis">
+    <div></div>
+    <div class="p-axis-track">
+      <span class="p-axis-tick" style="left:0%">0%</span>
+      <span class="p-axis-tick" style="left:33.3%">50%</span>
+      <span class="p-axis-tick" style="left:66.6%">100%</span>
+      <span class="p-axis-tick" style="left:100%">150%</span>
+    </div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="p-chart" id="p-chart"></div>
+
+  <div class="p-table-wrap p-hidden" id="p-table-wrap">
+    <table class="p-table">
+      <thead>
+        <tr>
+          <th>Sales Rep</th><th>Booked</th><th>Goal</th><th>% Goal</th>
+          <th>Needed / wk (Aug 15–31)</th><th>Avg pace / wk (Aug 1–14)</th>
+          <th>Conv. ($ SQL)</th><th>Status</th><th>🏁 Long Haul</th>
+        </tr>
+      </thead>
+      <tbody id="p-table-body"></tbody>
+    </table>
+  </div>
+
+  <div class="p-warn-callout">
+    <div class="p-wc-head">⚠ No August goal loaded in EMMA — 5 CET reps</div>
+    These reps show a <b>$0.00 target</b> for the August window, which makes % to goal read
+    "Infinity" and their weekly run rate go negative. They are held out of the ranking and the
+    contest track entirely, because their pace can't be computed — not because they aren't producing.
+    Four of the five are already well into six figures of booked volume, so this is a target-entry
+    gap, not a performance problem. Needs goals entered in EMMA before the August Pit Stop round can
+    be scored fairly.
+    <ul class="p-nt-list">
+      <li><b>Jeline 2Lavarias</b> — $73,939 booked · 28.0% conv.</li>
+      <li><b>Joanna Ballon</b> — $57,639 booked · 34.9% conv.</li>
+      <li><b>Nicole Tolete</b> — $50,351 booked · 29.4% conv.</li>
+      <li><b>Arden 2Asilo</b> — $47,411 booked · 27.6% conv.</li>
+      <li><b>Therese Ablang</b> — $1,144 booked · 2.9% conv.</li>
+    </ul>
+  </div>
+
+  <div class="p-foot">
+    <b>Excluded from ranking</b> — no real individual quota: EMMA System (auto-assigned leads,
+    $184,771 booked against a $424,200 August target). Amanda Ware, Brian Herzig, Donna Carrillo,
+    Nhel Banayad, Ralph Bustillo and Joseph Mcreynolds no longer appear in the EMMA Sales Report at
+    all for this window, so the previous quarter's exclusion notes for them no longer apply.
+    <br><b>New this period:</b> Brianne Newbro and Chauntelle Shivers both have August goals
+    ($56,000 each) and real booked volume for the first time, and are mapped to <b>CET</b>.
+    Note EMMA spells the name <b>Chauntelle</b> Shivers.
+    <br><b>Region coverage:</b> every rep in this pull is mapped — CTX 15, DFWT 9, CET 7 (of the
+    ranked 31). No unassigned reps this period.
+    <br><b>Methodology note:</b> "Needed / wk" is EMMA's own Weekly Run Rate column, used as-is.
+    Where it shows negative, the rep is already past goal and the figure is surplus, not a shortfall.
+    Calvin Hughes has no conversion figure in EMMA for this window (shows "%-"), so he cannot clear
+    the contest conversion gate on current data.
+    <br>Pulled from EMMA's Sales Report, Aug 1 – Aug 31, 2026 range, on Aug 14, 2026.
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // [name, booked, augustGoal, emmaWeeklyRunRate, region, conversionPctSQLDollars]
+  var reps = [
+    ["Jack Davis", 32250.50, 17500.00, -6453.34, "DFWT", 55.29],
+    ["Grant Hardison", 18084.50, 17500.00, -255.72, "DFWT", 40.19],
+    ["Hector Zavala", 13713.00, 17500.00, 1656.81, "CTX", 42.18],
+    ["Jevic 3Lazanas", 52050.00, 70000.00, 7853.13, "CET", 29.95],
+    ["Rance Pope", 19155.00, 26250.00, 3104.06, "CTX", 60.22],
+    ["Chris Beattie", 10152.00, 17500.00, 3214.75, "DFWT", 76.19],
+    ["Khevan Dueck", 9983.32, 17500.00, 3288.55, "DFWT", 34.39],
+    ["Zhang Pammit", 99776.00, 175000.00, 32910.50, "CET", 19.55],
+    ["Chauntelle Shivers", 31169.50, 56000.00, 10863.34, "CET", 36.20],
+    ["Shane Heaberlin", 10533.00, 19250.00, 3813.69, "DFWT", 39.30],
+    ["Brianne Newbro", 30084.75, 56000.00, 11337.92, "CET", 39.29],
+    ["Jules Nicolas", 93122.20, 175000.00, 35821.54, "CET", 33.28],
+    ["Joel Villatoro", 26863.00, 52500.00, 11216.19, "CTX", 21.93],
+    ["Danah 2Celestial", 82746.00, 175000.00, 40361.13, "CET", 16.30],
+    ["Lukas Konrad", 23812.00, 52500.00, 12551.00, "CTX", 57.68],
+    ["Alexander Tran", 7936.00, 17500.00, 4184.25, "CTX", 6.51],
+    ["Erik Orama", 21491.00, 52500.00, 13566.44, "DFWT", 22.28],
+    ["Nicholas Dagel", 20127.00, 52500.00, 14163.19, "CTX", 46.75],
+    ["Steven Anderson", 6990.00, 19250.00, 5363.75, "DFWT", 77.45],
+    ["Amy Arbasa", 41943.50, 122500.00, 35243.47, "CET", 37.78],
+    ["Dustin Street", 5974.80, 17500.00, 5042.28, "CTX", 23.82],
+    ["Jespah Lara", 39257.00, 122500.00, 36418.81, "CTX", 21.47],
+    ["Sergio Buenrostro", 4605.00, 17500.00, 5641.56, "CTX", 4.63],
+    ["Landon Vaughan", 13668.00, 52500.00, 16989.00, "DFWT", 32.35],
+    ["Zachary Krodel", 8528.00, 52500.00, 19237.75, "DFWT", 8.68],
+    ["Frank Williams", 2687.00, 17500.00, 6480.69, "CTX", 14.03],
+    ["Daniel Behseresht", 1556.00, 17500.00, 6975.50, "CTX", 4.62],
+    ["Garrison Cobe", 4516.00, 52500.00, 20993.00, "CTX", 7.92],
+    ["Cameron Klepac", 2134.00, 26250.00, 10550.75, "CTX", 12.76],
+    ["Calvin Hughes", 1221.00, 17500.00, 7122.06, "CTX", null],
+    ["Chris Anderson", 803.00, 17500.00, 7304.94, "CTX", 3.51]
+  ];
+
+  var WEEKS_ELAPSED = 14 / 7; // Aug 1 -> Aug 14 = 14 days
+  var TOTAL_RANKED = reps.length;
+  var CONV_GATE = 20; // The Long Haul: 20% weighted conversion
+  var tierRank = { red:0, yellow:1, green:2, superGreen:3 };
+  var tierLabel = { red:"Red — not close", yellow:"Yellow — close, needs to accelerate", green:"Green — pace on track", superGreen:"Super Green — goal already hit" };
+
+  var data = reps.map(function(r){
+    var name = r[0], booked = r[1], target = r[2], neededPerWeek = r[3], region = r[4] || "", conv = r[5];
+    var pctTarget = target > 0 ? (booked / target * 100) : NaN;
+    var avgPace = booked / WEEKS_ELAPSED;
+    var tier;
+    if (booked >= target) {
+      tier = "superGreen";
+    } else {
+      var ratio = neededPerWeek > 0 ? (avgPace / neededPerWeek) : 99;
+      if (ratio >= 1) tier = "green";
+      else if (ratio >= 0.5) tier = "yellow";
+      else tier = "red";
+    }
+    var onGoalPace = (tier === "green" || tier === "superGreen");
+    var convOk = (conv !== null && conv >= CONV_GATE);
+    return {
+      name: name, booked: booked, target: target, neededPerWeek: neededPerWeek,
+      avgPace: avgPace, pctTarget: pctTarget, tier: tier, region: region,
+      conv: conv, onGoalPace: onGoalPace, convOk: convOk,
+      eligible: onGoalPace && convOk
+    };
+  });
+
+  // sort: superGreen -> green -> yellow -> red ; within tier, best (highest %) first
+  data.sort(function(a,b){
+    if (tierRank[a.tier] !== tierRank[b.tier]) return tierRank[b.tier] - tierRank[a.tier];
+    return b.pctTarget - a.pctTarget;
+  });
+
+  function money(n){
+    var sign = n < 0 ? "-" : "";
+    n = Math.abs(n);
+    return sign + "$" + n.toLocaleString("en-US", {maximumFractionDigits:0});
+  }
+  function convText(d){
+    return d.conv === null ? "—" : d.conv.toFixed(1) + "%";
+  }
+  function contestNote(d){
+    if (d.eligible) return "On track for the August Pit Stop — clears goal pace and conversion";
+    if (d.onGoalPace && !d.convOk) return d.conv === null
+      ? "Goal pace OK — no conversion figure in EMMA"
+      : "Goal pace OK — conversion short of 20%";
+    if (!d.onGoalPace && d.convOk) return "Conversion clears 20% — behind on goal pace";
+    return "Behind on both goal pace and conversion";
+  }
+
+  var counts = { red:0, yellow:0, green:0, superGreen:0 };
+  data.forEach(function(d){ counts[d.tier]++; });
+  document.getElementById("p-behind-count").textContent = (counts.red + counts.yellow) + " of " + TOTAL_RANKED;
+  var eligibleCount = data.filter(function(d){ return d.eligible; }).length;
+  document.getElementById("p-contest-count").textContent = eligibleCount + " of " + TOTAL_RANKED;
+
+  var tileMeta = [
+    { key:"superGreen", label:"Super Green" },
+    { key:"green", label:"Green" },
+    { key:"yellow", label:"Yellow" },
+    { key:"red", label:"Red" }
+  ];
+  var tilesEl = document.getElementById("p-status-tiles");
+  tileMeta.forEach(function(t){
+    var el = document.createElement("div");
+    el.className = "p-status-tile tier-" + t.key + " is-active";
+    el.dataset.tier = t.key;
+    el.innerHTML = '<div class="p-st-count">' + counts[t.key] + '</div><div class="p-st-label">' + t.label + '</div>';
+    el.addEventListener("click", function(){
+      el.classList.toggle("is-active");
+      applyFilters();
+    });
+    tilesEl.appendChild(el);
+  });
+
+  var chartEl = document.getElementById("p-chart");
+  var tableBodyEl = document.getElementById("p-table-body");
+
+  data.forEach(function(d){
+    var barWidth = Math.min(d.pctTarget / 150 * 100, 100);
+
+    var row = document.createElement("div");
+    row.className = "p-row";
+    row.dataset.tier = d.tier;
+    row.dataset.region = d.region;
+    row.dataset.eligible = d.eligible ? "1" : "0";
+    row.tabIndex = 0;
+
+    var tipHtml = "<b>" + d.name + "</b><br>" +
+      "Booked: <b>" + money(d.booked) + "</b> / Aug goal: <b>" + money(d.target) + "</b><br>" +
+      "Avg pace, Aug 1–14: <b>" + money(d.avgPace) + "</b>/wk<br>" +
+      (d.neededPerWeek > 0
+        ? "Needed, Aug 15–31: <b>" + money(d.neededPerWeek) + "</b>/wk"
+        : "Already past goal") + "<br>" +
+      "Conversion ($ SQL): <b>" + convText(d) + "</b><br>" +
+      "🏁 " + contestNote(d) +
+      "<span class='p-tip-tier'>" + tierLabel[d.tier] + "</span>";
+
+    row.innerHTML =
+      '<div class="p-name">' + d.name + '</div>' +
+      '<div class="p-track">' +
+        '<div class="p-target-line"></div>' +
+        '<div class="p-bar tier-' + d.tier + '" style="width:' + barWidth + '%"></div>' +
+        '<div class="p-tip">' + tipHtml + '</div>' +
+      '</div>' +
+      '<div class="p-pct">' + d.pctTarget.toFixed(1) + '%</div>' +
+      '<div class="p-flag">' + (d.eligible ? '🏁' : '') + '</div>';
+
+    chartEl.appendChild(row);
+
+    var tr = document.createElement("tr");
+    tr.dataset.tier = d.tier;
+    tr.dataset.region = d.region;
+    tr.dataset.eligible = d.eligible ? "1" : "0";
+    tr.innerHTML =
+      '<td class="p-td-name">' + d.name + '</td>' +
+      '<td>' + money(d.booked) + '</td>' +
+      '<td>' + money(d.target) + '</td>' +
+      '<td>' + d.pctTarget.toFixed(1) + '%</td>' +
+      '<td>' + (d.neededPerWeek > 0 ? money(d.neededPerWeek) : "—") + '</td>' +
+      '<td>' + money(d.avgPace) + '</td>' +
+      '<td class="' + (d.conv === null ? '' : (d.convOk ? 'p-conv-ok' : 'p-conv-low')) + '">' + convText(d) + '</td>' +
+      '<td><span class="p-chip tier-' + d.tier + '">' + (d.tier === "superGreen" ? "Hit" : d.tier[0].toUpperCase() + d.tier.slice(1)) + '</span></td>' +
+      '<td>' + (d.eligible ? '🏁 On track' : '<span style="color:var(--ink-3)">—</span>') + '</td>';
+    tableBodyEl.appendChild(tr);
+  });
+
+  function activeTiers(){
+    return Array.prototype.map.call(tilesEl.querySelectorAll(".p-status-tile.is-active"), function(el){ return el.dataset.tier; });
+  }
+
+  var regionToggleEl = document.getElementById("p-region-toggle");
+  var regionSummaryEl = document.getElementById("p-region-summary");
+  var contestBtn = document.getElementById("p-contest-btn");
+  var currentRegion = "all";
+  var contestOnly = false;
+
+  function updateRegionSummary(){
+    if (currentRegion === "all") {
+      regionSummaryEl.classList.remove("is-visible");
+      return;
+    }
+    var inRegion = data.filter(function(d){ return d.region === currentRegion; });
+    var booked = inRegion.reduce(function(s,d){ return s + d.booked; }, 0);
+    var target = inRegion.reduce(function(s,d){ return s + d.target; }, 0);
+    var pct = target > 0 ? (booked / target * 100) : 0;
+    var elig = inRegion.filter(function(d){ return d.eligible; }).length;
+    regionSummaryEl.innerHTML = "<b>" + currentRegion + "</b> — " + inRegion.length + " reps · " +
+      money(booked) + " booked of " + money(target) + " August goal · <b>" + pct.toFixed(1) + "%</b> to region goal · " +
+      "<b>" + elig + "</b> on the Long Haul track";
+    regionSummaryEl.classList.add("is-visible");
+  }
+
+  function applyFilters(){
+    var active = activeTiers();
+    document.querySelectorAll(".p-row, table.p-table tbody tr").forEach(function(el){
+      var regionMatch = currentRegion === "all" || el.dataset.region === currentRegion;
+      var contestMatch = !contestOnly || el.dataset.eligible === "1";
+      var show = active.indexOf(el.dataset.tier) !== -1 && regionMatch && contestMatch;
+      el.classList.toggle("p-hidden", !show);
+    });
+    updateRegionSummary();
+  }
+
+  regionToggleEl.querySelectorAll("button").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      regionToggleEl.querySelectorAll("button").forEach(function(b){ b.classList.remove("is-on"); });
+      btn.classList.add("is-on");
+      currentRegion = btn.dataset.region;
+      applyFilters();
+    });
+  });
+
+  contestBtn.addEventListener("click", function(){
+    contestOnly = !contestOnly;
+    contestBtn.classList.toggle("is-on", contestOnly);
+    applyFilters();
+  });
+
+  var chartBtn = document.getElementById("p-view-chart");
+  var tableBtn = document.getElementById("p-view-table");
+  var chartWrap = document.getElementById("p-chart");
+  var axisWrap = document.querySelector(".p-chart-axis");
+  var tableWrap = document.getElementById("p-table-wrap");
+  chartBtn.addEventListener("click", function(){
+    chartBtn.classList.add("is-on"); tableBtn.classList.remove("is-on");
+    chartWrap.classList.remove("p-hidden"); axisWrap.classList.remove("p-hidden");
+    tableWrap.classList.add("p-hidden");
+  });
+  tableBtn.addEventListener("click", function(){
+    tableBtn.classList.add("is-on"); chartBtn.classList.remove("is-on");
+    tableWrap.classList.remove("p-hidden");
+    chartWrap.classList.add("p-hidden"); axisWrap.classList.add("p-hidden");
+  });
+})();
+</script>
+</body>
+</html>
