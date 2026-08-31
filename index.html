@@ -262,8 +262,10 @@
   <div class="p-eyebrow">Sales Dashboard · EMMA V4</div>
   <h1 class="p-title">Individual Sales Pacing — August 2026</h1>
   <p class="p-sub">
-    Period <b>Aug 1 – Aug 31, 2026</b> · today is <b>Aug 28</b> — day <b>28 of 31</b>
-    (<b>90.3%</b> of the month elapsed) · 35 quota-carrying reps.
+    Period <b>Aug 1 – Aug 31, 2026</b> · today is <b>Aug 31</b> — day <b>31 of 31</b>
+    (<b>100%</b> of the month elapsed) · 35 quota-carrying reps.
+    <br><b>Final August standings.</b> The month is complete, so the colors below report how August
+    <i>ended</i> — they are no longer a projection.
   </p>
 
   <div class="p-callout">
@@ -277,22 +279,30 @@
     CTX targets and flatter their pace, while scoring CET correctly — worse than a clean monthly
     view. This report stays on the August window until Sept and Oct goals are entered for every region.
     <div class="p-legend-row">
-      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good-deep)"></span>Super Green — already hit goal</span>
-      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good)"></span>Green — pace clears what's needed</span>
-      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--warn)"></span>Yellow — behind, but within reach</span>
-      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--crit)"></span>Red — pace falls well short, needs attention now</span>
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good-deep)"></span>Super Green — goal hit</span>
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good)"></span>Green — finished just short, 90–99% of goal</span>
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--warn)"></span>Yellow — finished at 50–89% of goal</span>
+      <span class="p-legend-chip"><span class="p-swatch" style="background:var(--crit)"></span>Red — finished under 50% of goal</span>
     </div>
   </div>
 
   <div class="p-callout">
-    <b>How the color is decided</b> — bar length is each rep's <b>% of August goal booked so far</b>.
-    Color is a <i>projection</i>: their average weekly booking pace over the 28 days elapsed
-    (Aug 1–28), compared against EMMA's Weekly Run Rate — the $/week they'd still need over the
-    remaining 3 days (Aug 29–31) to close the gap.
+    <b>How the color is decided — changed for the final day</b> — bar length is each rep's
+    <b>% of August goal booked</b>, same as always. Color is now a <i>result</i>, not a projection:
+    Super Green hit goal, Green finished at 90–99%, Yellow at 50–89%, Red under 50%.
     <br><br>
-    <b>🏁 The Long Haul column</b> — August is the first Monthly Pit Stop round. The flag marks reps
-    currently clearing <i>both</i> contest gates: on pace to hit their sales goal (green or better)
-    <b>and</b> at or above 20% weighted conversion. Conversion here is EMMA's
+    <b>Why it changed:</b> for the first 30 days, color compared each rep's weekly pace against
+    EMMA's Weekly Run Rate — the $/week still needed to close the gap. With Aug 1–31 complete there
+    are zero days remaining, so EMMA stops publishing that column entirely (it returns a dash for
+    every rep). There is no pace left to project from, and no substitute figure has been invented
+    here. Grading the finished month by % of goal achieved is the only honest reading left. The
+    "Gap to goal" column is now simply booked minus goal, and it is display-only.
+    <br><br>
+    <b>🏁 The Long Haul column</b> — August is the first Monthly Pit Stop round, and these are the
+    final standings it would be scored from. The flag marks reps clearing <i>both</i> contest gates:
+    <b>hit their sales goal</b> <b>and</b> at or above 20% weighted conversion. Note this is now the
+    contest rule applied literally — earlier in the month the flag used "on goal pace" as a stand-in
+    for a goal not yet reachable. Conversion here is EMMA's
     <b>Conversion Rate ($ SQL)</b> — the dollar-weighted figure, which is the closest match to
     "weighted conversion" in the contest rules. Worth confirming that's the intended metric before
     anything is announced as official.
@@ -301,13 +311,13 @@
   <div class="p-tiles">
     <div class="p-tile">
       <div class="p-tile-label">Company Booked</div>
-      <div class="p-tile-value">$2.30M</div>
-      <div class="p-tile-sub">of $2.50M goal · 92.2%</div>
+      <div class="p-tile-value">$2.50M</div>
+      <div class="p-tile-sub">of $2.50M goal · <b>100.3%</b> — target hit</div>
     </div>
     <div class="p-tile">
       <div class="p-tile-label">Your Team Booked</div>
-      <div class="p-tile-value">$1.95M</div>
-      <div class="p-tile-sub">of $2.07M goal · 94.0%</div>
+      <div class="p-tile-value">$2.12M</div>
+      <div class="p-tile-sub">of $2.07M goal · <b>102.3%</b> — target hit</div>
     </div>
     <div class="p-tile">
       <div class="p-tile-label">Cancellation Rate</div>
@@ -315,14 +325,14 @@
       <div class="p-tile-sub">company, booking-date basis</div>
     </div>
     <div class="p-tile">
-      <div class="p-tile-label">Reps Behind Pace</div>
+      <div class="p-tile-label">Reps Under Goal</div>
       <div class="p-tile-value" id="p-behind-count">–</div>
-      <div class="p-tile-sub">yellow + red, of 35</div>
+      <div class="p-tile-sub">finished short of goal, of 35</div>
     </div>
     <div class="p-tile is-contest">
       <div class="p-tile-label">🏁 Long Haul Track</div>
       <div class="p-tile-value" id="p-contest-count">–</div>
-      <div class="p-tile-sub">clearing goal pace + 20% conv.</div>
+      <div class="p-tile-sub">hit goal + 20% conv.</div>
     </div>
   </div>
 
@@ -362,7 +372,7 @@
       <thead>
         <tr>
           <th>Sales Rep</th><th>Booked</th><th>Goal</th><th>% Goal</th>
-          <th>Needed / wk (Aug 29–31)</th><th>Avg pace / wk (Aug 1–28)</th>
+          <th>Gap to goal</th><th>Avg pace / wk (Aug 1–31)</th>
           <th>Conv. ($ SQL)</th><th>Status</th><th>🏁 Long Haul</th>
         </tr>
       </thead>
@@ -372,109 +382,124 @@
 
   <div class="p-foot">
     <b>Excluded from ranking</b> — no real individual quota: EMMA System (auto-assigned leads,
-    $353,443 booked against a $424,200 August target), and <b>Therese Ablang</b>, who has no goal
+    $384,570 booked against a $424,200 August target), and <b>Therese Ablang</b>, who has no goal
     this quarter (confirmed by Amanda, Aug 14) and is intentionally left off rather than shown at
     $0. Amanda Ware, Brian Herzig, Donna Carrillo, Nhel Banayad, Ralph Bustillo and Joseph
     Mcreynolds no longer appear in the EMMA Sales Report at all for this window, so the previous
     quarter's exclusion notes for them no longer apply.
     <br><b>Region coverage:</b> every rep in this pull is mapped — CTX 15, CET 11, DFWT 9 (of the
-    ranked 35). No unassigned reps this period.
-    <br><b>Moved since yesterday:</b> one tier change — <b>Amy Arbasa</b> crossed her goal
-    ($123,492 of $122,500), Green → <b>Super Green</b>, taking Super Green from 16 to 17. She was
-    already on the Long Haul track, so the contest count holds at 18 and reps behind pace holds at 15.
-    Biggest booking move of the day by a wide margin: <b>Zhang Pammit</b> <b>+$16,203</b>, now at
-    110.3% of goal. <b>Alexander Tran</b> added +$7,472 and <b>Danah 2Celestial</b> +$5,320 — Danah is
-    the closest Green to crossing, needing about $29,064 over the final three days.
-    <br><b>Four reps went backwards</b>, which means cancellations booked against them:
-    <b>Jules Nicolas</b> (−$3,576), <b>Lukas Konrad</b> (−$1,468), <b>Calvin Hughes</b> (−$1,323) and
-    <b>Jeline 2Lavarias</b> (−$1,208). None of them changed tier — Lukas was already Red, the other
-    three are comfortably past goal — but company cancellation rate ticked up from 11.4% to 11.8%,
-    which is the same movement seen from the other side. Note EMMA spells the new hire's name
-    <b>Chauntelle</b> Shivers.
-    <br><b>Methodology note:</b> "Needed / wk" is EMMA's Weekly Run Rate column. With 3 days left,
-    EMMA now renders that column as a plain dash for every rep already past goal rather than the
-    negative figure it showed earlier in the month, so for those reps the surplus shown here is
-    derived as booked minus target. It is display-only — tier and rank for a past-goal rep depend on
-    booked ≥ target, not on this column. For reps still short of goal the figure is EMMA's, used as-is.
-    <br>Pulled from EMMA's Sales Report, Aug 1 – Aug 31, 2026 range, on <b>Aug 28, 2026, ~10:00 AM CT</b>.
-    <br><b>Quarterly-window check (Aug 28):</b> re-run and unchanged — still not safe to switch.
-    CET quarter targets equal 3× the monthly goal (Zhang Pammit and Danah 2Celestial both $525,000,
-    Amy Arbasa $367,500), but CTX still does not — Nicholas Dagel returns $94,500 against a $52,500
-    August goal, where 3× would be $157,500, and Jespah Lara returns $297,500 against a $122,500
-    August goal, where 3× would be $367,500. The report stays on the August window until every region
-    lines up. With four days left in the month, the more likely next move is rolling this to a
-    September or full-Q3 view rather than switching mid-August — Amanda's call.
+    ranked 35). No unassigned reps this period, and no new or unrecognized accounts appeared.
+    <br><b>How August finished:</b> <b>18 of 35 reps hit goal, 17 finished short.</b> The company
+    cleared its target at <b>100.3%</b> ($2,503,031 of $2,495,296) and Amanda's team at <b>102.3%</b>
+    ($2,118,461 of $2,071,096). Across the 35 ranked reps alone: $2,117,221 booked against
+    $2,075,500 in goals, or 102.0%.
+    <br><b>By region:</b> CET was the strongest — 7 of 11 hit goal and the region finished at
+    <b>107.1%</b> of combined target ($1,375,535 of $1,284,500). CTX went 7 of 15 but landed at
+    <b>98.2%</b> of dollars ($515,450 of $525,000), meaning its misses were concentrated in a few
+    large gaps rather than spread thin. DFWT went 4 of 9 and finished at <b>85.1%</b>
+    ($226,236 of $266,000) — the region that most needs a September look.
+    <br><b>Three reps finished within reach of goal</b> and are worth naming in any month-end
+    recap: <b>Arden 2Asilo</b> missed by only <b>$3,109</b> (97.3%), <b>Chris Anderson</b> by
+    <b>$1,522</b> (91.3%) and <b>Garrison Cobe</b> by <b>$6,686</b> (87.3%).
+    <br><b>One contest edge case:</b> <b>Alexander Tran</b> finished at <b>169.1%</b> of goal — a
+    strong month on volume — but his conversion came in at <b>12.49%</b>, below the 20% gate, so he
+    is the only rep who hit goal and still does not qualify for the August Pit Stop. Worth a
+    deliberate decision before results are announced, since the optics of excluding the
+    third-highest % to goal are real.
+    <br><b>Methodology note — colors changed today.</b> For Aug 1–30 the tier was a projection built
+    on EMMA's Weekly Run Rate. With the month complete, EMMA returns a dash in that column for
+    <i>every</i> rep, because zero days remain to pace against — so there is no projection input
+    left. No replacement run rate was invented. Tiers are now the finished result by % of goal
+    (Super Green = goal hit, Green = 90–99%, Yellow = 50–89%, Red = under 50%), and the "Gap to
+    goal" column is simply booked minus goal, display-only. The 🏁 flag now applies the contest rule
+    literally — goal hit <i>and</i> 20%+ conversion — instead of the "on goal pace" stand-in used
+    while the month was still open. This reframing was Amanda's call, made Aug 31.
+    <br>Pulled from EMMA's Sales Report, Aug 1 – Aug 31, 2026 range, on <b>Aug 31, 2026, ~7:05 AM CT</b>.
+    <br><b>Quarterly-window check (Aug 31):</b> re-run — <b>partly loaded now, but still not safe to
+    switch.</b> CET quarter targets equal exactly 3× the monthly goal (Zhang Pammit and Jules Nicolas
+    both $525,000 against $175,000 August goals; Jeline 2Lavarias $341,250 against $113,750). CTX
+    still does not line up, and in two different directions: <b>Nicholas Dagel</b> returns $94,500
+    for the quarter against a $52,500 August goal, where 3× would be $157,500 — understated; while
+    <b>Calvin Hughes</b> returns $192,500 against a $17,500 August goal, roughly 11× the month —
+    overstated. Until CTX is corrected, a quarterly view would flatter some reps and penalize others.
+    With August now closed, the next move is rolling this to a September or full-Q3 view — Amanda's
+    call, and it needs the two CTX targets fixed in EMMA first.
   </div>
 
 </div>
 
 <script>
 (function(){
-  // [name, booked, augustGoal, emmaWeeklyRunRate, region, conversionPctSQLDollars]
+  // [name, booked, augustGoal, gapToGoal (target - booked; negative = surplus, display-only), region, conversionPctSQLDollars]
   var reps = [
     ["Calvin Hughes", 65330.00, 17500.00, -47830.00, "CTX", 31.79],
-    ["Hector Zavala", 41983.50, 17500.00, -24483.50, "CTX", 36.78],
+    ["Hector Zavala", 48078.00, 17500.00, -30578.00, "CTX", 38.52],
     ["Jack Davis", 37483.00, 17500.00, -19983.00, "DFWT", 43.83],
-    ["Alexander Tran", 29601.00, 17500.00, -12101.00, "CTX", 12.60],
-    ["Jevic 3Lazanas", 101482.50, 70000.00, -31482.50, "CET", 35.71],
-    ["Chris Beattie", 24026.00, 17500.00, -6526.00, "DFWT", 39.43],
+    ["Alexander Tran", 29601.00, 17500.00, -12101.00, "CTX", 12.49],
+    ["Daniel Behseresht", 27807.00, 17500.00, -10307.00, "CTX", 44.86],
+    ["Chris Beattie", 24494.00, 17500.00, -6994.00, "DFWT", 39.93],
     ["Grant Hardison", 22781.50, 17500.00, -5281.50, "DFWT", 33.37],
-    ["Jeline 2Lavarias", 140538.50, 113750.00, -26788.50, "CET", 31.40],
-    ["Brianne Newbro", 65183.75, 56000.00, -9183.75, "CET", 35.87],
+    ["Jevic 3Lazanas", 97564.00, 70000.00, -27564.00, "CET", 33.15],
+    ["Jeline 2Lavarias", 147445.75, 113750.00, -33695.75, "CET", 30.37],
+    ["Jules Nicolas", 220522.20, 175000.00, -45522.20, "CET", 43.85],
+    ["Brianne Newbro", 67830.75, 56000.00, -11830.75, "CET", 36.63],
+    ["Chauntelle Shivers", 66111.00, 56000.00, -10111.00, "CET", 30.87],
+    ["Joel Villatoro", 60848.00, 52500.00, -8348.00, "CTX", 23.98],
+    ["Zhang Pammit", 202403.50, 175000.00, -27403.50, "CET", 21.29],
     ["Khevan Dueck", 20168.32, 17500.00, -2668.32, "DFWT", 33.06],
-    ["Chauntelle Shivers", 63324.00, 56000.00, -7324.00, "CET", 30.41],
-    ["Jules Nicolas", 196732.20, 175000.00, -21732.20, "CET", 39.08],
-    ["Zhang Pammit", 193035.50, 175000.00, -18035.50, "CET", 21.69],
+    ["Amy Arbasa", 137746.00, 122500.00, -15246.00, "CET", 46.22],
     ["Dustin Street", 19125.80, 17500.00, -1625.80, "CTX", 32.92],
-    ["Joel Villatoro", 55967.00, 52500.00, -3467.00, "CTX", 25.41],
-    ["Frank Williams", 18040.00, 17500.00, -540.00, "CTX", 26.94],
-    ["Amy Arbasa", 123492.00, 122500.00, -992.00, "CET", 42.60],
-    ["Shane Heaberlin", 17486.00, 19250.00, 1764.00, "DFWT", 47.40],
-    ["Arden 2Asilo", 100089.25, 113750.00, 13660.75, "CET", 33.33],
-    ["Danah 2Celestial", 145936.00, 175000.00, 29064.00, "CET", 17.77],
-    ["Rance Pope", 19510.00, 26250.00, 6740.00, "CTX", 49.26],
-    ["Joanna Ballon", 80537.00, 113750.00, 33213.00, "CET", 34.55],
-    ["Nicole Tolete", 79028.00, 113750.00, 34722.00, "CET", 20.81],
-    ["Jespah Lara", 75931.00, 122500.00, 46569.00, "CTX", 24.89],
-    ["Zachary Krodel", 32500.00, 52500.00, 20000.00, "DFWT", 14.20],
-    ["Nicholas Dagel", 32276.00, 52500.00, 20224.00, "CTX", 23.27],
-    ["Chris Anderson", 10020.00, 17500.00, 7480.00, "CTX", 10.86],
-    ["Erik Orama", 28723.00, 52500.00, 23777.00, "DFWT", 13.53],
-    ["Lukas Konrad", 27797.00, 52500.00, 24703.00, "CTX", 32.44],
-    ["Landon Vaughan", 27611.00, 52500.00, 24889.00, "DFWT", 36.96],
-    ["Garrison Cobe", 27018.00, 52500.00, 25482.00, "CTX", 14.89],
-    ["Steven Anderson", 8452.00, 19250.00, 10798.00, "DFWT", 44.44],
-    ["Sergio Buenrostro", 6687.00, 17500.00, 10813.00, "CTX", 4.63],
-    ["Daniel Behseresht", 3804.00, 17500.00, 13696.00, "CTX", 10.01],
+    ["Frank Williams", 18315.00, 17500.00, -815.00, "CTX", 27.24],
+    ["Arden 2Asilo", 110641.25, 113750.00, 3108.75, "CET", 34.56],
+    ["Chris Anderson", 15978.00, 17500.00, 1522.00, "CTX", 16.62],
+    ["Garrison Cobe", 45814.00, 52500.00, 6686.00, "CTX", 17.62],
+    ["Danah 2Celestial", 151236.00, 175000.00, 23764.00, "CET", 17.06],
+    ["Nicholas Dagel", 43145.00, 52500.00, 9355.00, "CTX", 25.82],
+    ["Shane Heaberlin", 15056.00, 19250.00, 4194.00, "DFWT", 40.81],
+    ["Nicole Tolete", 87357.00, 113750.00, 26393.00, "CET", 21.96],
+    ["Joanna Ballon", 86678.00, 113750.00, 27072.00, "CET", 32.54],
+    ["Rance Pope", 19510.00, 26250.00, 6740.00, "CTX", 43.85],
+    ["Zachary Krodel", 38833.00, 52500.00, 13667.00, "DFWT", 16.15],
+    ["Jespah Lara", 83048.00, 122500.00, 39452.00, "CTX", 26.61],
+    ["Erik Orama", 34906.00, 52500.00, 17594.00, "DFWT", 15.39],
+    ["Lukas Konrad", 28685.00, 52500.00, 23815.00, "CTX", 29.88],
+    ["Steven Anderson", 8927.00, 19250.00, 10323.00, "DFWT", 43.77],
+    ["Landon Vaughan", 23587.00, 52500.00, 28913.00, "DFWT", 31.63],
+    ["Sergio Buenrostro", 6687.00, 17500.00, 10813.00, "CTX", 3.89],
     ["Cameron Klepac", 3478.00, 26250.00, 22772.00, "CTX", 12.75]
   ];
 
-  var WEEKS_ELAPSED = 28 / 7; // Aug 1 -> Aug 28 = 28 days
+  var WEEKS_ELAPSED = 31 / 7; // Aug 1 -> Aug 31 = 31 days (full month)
   var TOTAL_RANKED = reps.length;
   var CONV_GATE = 20; // The Long Haul: 20% weighted conversion
   var tierRank = { red:0, yellow:1, green:2, superGreen:3 };
-  var tierLabel = { red:"Red — not close", yellow:"Yellow — close, needs to accelerate", green:"Green — pace on track", superGreen:"Super Green — goal already hit" };
+  // FINAL-RESULT tiers. August is complete, so color reports how the month ENDED,
+  // not a projection. EMMA stops publishing Weekly Run Rate once zero days remain,
+  // so there is no pace input left to project from and none is invented here.
+  var tierLabel = {
+    red:"Red — finished under 50% of goal",
+    yellow:"Yellow — finished at 50–89% of goal",
+    green:"Green — finished just short, 90–99% of goal",
+    superGreen:"Super Green — goal hit"
+  };
 
   var data = reps.map(function(r){
-    var name = r[0], booked = r[1], target = r[2], neededPerWeek = r[3], region = r[4] || "", conv = r[5];
+    var name = r[0], booked = r[1], target = r[2], gapToGoal = r[3], region = r[4] || "", conv = r[5];
     var pctTarget = target > 0 ? (booked / target * 100) : NaN;
     var avgPace = booked / WEEKS_ELAPSED;
     var tier;
-    if (booked >= target) {
-      tier = "superGreen";
-    } else {
-      var ratio = neededPerWeek > 0 ? (avgPace / neededPerWeek) : 99;
-      if (ratio >= 1) tier = "green";
-      else if (ratio >= 0.5) tier = "yellow";
-      else tier = "red";
-    }
-    var onGoalPace = (tier === "green" || tier === "superGreen");
+    if (booked >= target) tier = "superGreen";
+    else if (pctTarget >= 90) tier = "green";
+    else if (pctTarget >= 50) tier = "yellow";
+    else tier = "red";
+    var hitGoal = (booked >= target);
     var convOk = (conv !== null && conv >= CONV_GATE);
     return {
-      name: name, booked: booked, target: target, neededPerWeek: neededPerWeek,
+      name: name, booked: booked, target: target, neededPerWeek: gapToGoal,
       avgPace: avgPace, pctTarget: pctTarget, tier: tier, region: region,
-      conv: conv, onGoalPace: onGoalPace, convOk: convOk,
-      eligible: onGoalPace && convOk
+      conv: conv, hitGoal: hitGoal, onGoalPace: hitGoal, convOk: convOk,
+      // Contest rule as written: hit the sales goal AND clear 20% weighted conversion.
+      eligible: hitGoal && convOk
     };
   });
 
@@ -493,17 +518,17 @@
     return d.conv === null ? "—" : d.conv.toFixed(1) + "%";
   }
   function contestNote(d){
-    if (d.eligible) return "On track for the August Pit Stop — clears goal pace and conversion";
-    if (d.onGoalPace && !d.convOk) return d.conv === null
-      ? "Goal pace OK — no conversion figure in EMMA"
-      : "Goal pace OK — conversion short of 20%";
-    if (!d.onGoalPace && d.convOk) return "Conversion clears 20% — behind on goal pace";
-    return "Behind on both goal pace and conversion";
+    if (d.eligible) return "Qualified for the August Pit Stop — hit goal and cleared 20% conversion";
+    if (d.hitGoal && !d.convOk) return d.conv === null
+      ? "Hit goal — no conversion figure in EMMA, so the gate can't be cleared"
+      : "Hit goal — conversion finished short of 20%";
+    if (!d.hitGoal && d.convOk) return "Conversion cleared 20% — but finished short of goal";
+    return "Finished short on both goal and conversion";
   }
 
   var counts = { red:0, yellow:0, green:0, superGreen:0 };
   data.forEach(function(d){ counts[d.tier]++; });
-  document.getElementById("p-behind-count").textContent = (counts.red + counts.yellow) + " of " + TOTAL_RANKED;
+  document.getElementById("p-behind-count").textContent = (counts.red + counts.yellow + counts.green) + " of " + TOTAL_RANKED;
   var eligibleCount = data.filter(function(d){ return d.eligible; }).length;
   document.getElementById("p-contest-count").textContent = eligibleCount + " of " + TOTAL_RANKED;
 
@@ -541,10 +566,10 @@
 
     var tipHtml = "<b>" + d.name + "</b><br>" +
       "Booked: <b>" + money(d.booked) + "</b> / Aug goal: <b>" + money(d.target) + "</b><br>" +
-      "Avg pace, Aug 1–25: <b>" + money(d.avgPace) + "</b>/wk<br>" +
+      "Avg pace, Aug 1–31: <b>" + money(d.avgPace) + "</b>/wk<br>" +
       (d.neededPerWeek > 0
-        ? "Needed, Aug 29–31: <b>" + money(d.neededPerWeek) + "</b>/wk"
-        : "Already past goal") + "<br>" +
+        ? "Finished short by <b>" + money(d.neededPerWeek) + "</b>"
+        : "Beat goal by <b>" + money(Math.abs(d.neededPerWeek)) + "</b>") + "<br>" +
       "Conversion ($ SQL): <b>" + convText(d) + "</b><br>" +
       "🏁 " + contestNote(d) +
       "<span class='p-tip-tier'>" + tierLabel[d.tier] + "</span>";
@@ -570,11 +595,11 @@
       '<td>' + money(d.booked) + '</td>' +
       '<td>' + money(d.target) + '</td>' +
       '<td>' + d.pctTarget.toFixed(1) + '%</td>' +
-      '<td>' + (d.neededPerWeek > 0 ? money(d.neededPerWeek) : "—") + '</td>' +
+      '<td>' + (d.neededPerWeek > 0 ? "−" + money(d.neededPerWeek) : "+" + money(Math.abs(d.neededPerWeek))) + '</td>' +
       '<td>' + money(d.avgPace) + '</td>' +
       '<td class="' + (d.conv === null ? '' : (d.convOk ? 'p-conv-ok' : 'p-conv-low')) + '">' + convText(d) + '</td>' +
       '<td><span class="p-chip tier-' + d.tier + '">' + (d.tier === "superGreen" ? "Hit" : d.tier[0].toUpperCase() + d.tier.slice(1)) + '</span></td>' +
-      '<td>' + (d.eligible ? '🏁 On track' : '<span style="color:var(--ink-3)">—</span>') + '</td>';
+      '<td>' + (d.eligible ? '🏁 Qualified' : '<span style="color:var(--ink-3)">—</span>') + '</td>';
     tableBodyEl.appendChild(tr);
   });
 
