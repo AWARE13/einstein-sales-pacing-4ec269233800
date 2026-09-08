@@ -88,8 +88,13 @@
     font-size:13.5px; line-height:1.6; color:var(--ink-2);
   }
   .p-callout b{ color:var(--ink); }
-  .p-callout .p-legend-row{
-    display:flex; flex-wrap:wrap; gap:14px; margin-top:10px;
+  .p-legend-row{
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+  .p-callout .p-legend-row{ margin-top:10px; }
+  .p-legend-box{
+    margin-top:14px; padding:12px 18px; border-radius:10px;
+    background: var(--surface-raised); border:1px solid var(--border);
   }
   .p-legend-chip{ display:flex; align-items:center; gap:7px; font-size:13px; color:var(--ink); }
   .p-swatch{ width:12px; height:12px; border-radius:3px; flex:none; }
@@ -286,6 +291,9 @@
     conversion (EMMA's <b>Conversion Rate ($ SQL)</b>, still worth confirming as the intended
     metric). <b>Tracking indicator, not contest scoring</b> — the August Pit Stop is scored off the
     frozen close-out.
+  </div>
+
+  <div class="p-legend-box">
     <div class="p-legend-row">
       <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good-deep)"></span>Super Green — combined goal already hit</span>
       <span class="p-legend-chip"><span class="p-swatch" style="background:var(--good)"></span>Green — on or ahead of required pace</span>
