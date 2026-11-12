@@ -282,7 +282,7 @@
     <b>Early-month caveat:</b> pace is built on under two weeks, so one booking (or one cancellation)
     can still move a small-goal rep a full tier.
     <br><br>
-    <b>⭐ Pace + Conversion column</b> — on or ahead of pace <i>and</i> at or above 20% conversion
+    <b>⭐ Pace + Conversion column</b> — on or ahead of pace <i>and</i> at or above 26% conversion
     (EMMA's <b>Conversion Rate ($ SQL)</b>). The Long Haul contest ended Oct 31, so this is a coaching
     indicator only, not a contest.
   </div>
@@ -321,7 +321,7 @@
     <div class="p-tile is-contest">
       <div class="p-tile-label">⭐ Pace + Conversion</div>
       <div class="p-tile-value" id="p-contest-count">–</div>
-      <div class="p-tile-sub">on pace + 20% conv.</div>
+      <div class="p-tile-sub">on pace + 26% conv.</div>
     </div>
   </div>
 
@@ -334,7 +334,7 @@
       <button data-region="DFWT">DFWT</button>
       <button data-region="CET">CET</button>
     </div>
-    <button class="p-contestbtn" id="p-contest-btn">⭐ Pace + 20% conversion only</button>
+    <button class="p-contestbtn" id="p-contest-btn">⭐ Pace + 26% conversion only</button>
     <div class="p-viewtoggle">
       <button id="p-view-chart" class="is-on">Chart</button>
       <button id="p-view-table">Table</button>
@@ -385,7 +385,7 @@
     are each under $750 from theirs. By region: CTX 52.7%, DFWT 41.0%, CET 36.2%.
     <br><b>Worth a look:</b> Hector Zavala's November booked total fell from about $19,040 on Nov 10 to
     $9,172 on Nov 12 (likely a cancellation or a moved job), taking him from past goal to 52.4%.
-    <br><b>Conversion:</b> every ranked rep has a conversion figure. Nobody on pace is under 20%.
+    <br><b>Conversion:</b> every ranked rep has a conversion figure. The conversion bar moved from 20% to 26% on Nov 12. Arden 2Asilo is on pace but at 23.6%, just under it.
     <br><b>Companion reports:</b> the final Q3 close-out is at
     <a href="./q3-final.html" style="color:var(--accent)">q3-final.html</a>, the Aug–Sept close-out at
     <a href="./aug-sept-final.html" style="color:var(--accent)">aug-sept-final.html</a> and the
@@ -438,7 +438,7 @@
 
   var WEEKS_ELAPSED = 12 / 7; // Nov 1 -> Nov 12 = 12 days elapsed of a 30-day month
   var TOTAL_RANKED = reps.length;
-  var CONV_GATE = 20; // coaching indicator: 20% weighted conversion
+  var CONV_GATE = 26; // coaching indicator: 26% weighted conversion (raised from 20% on Nov 12)
   var tierRank = { red:0, yellow:1, green:2, superGreen:3 };
   // PACE-PROJECTION tiers. November is open through Nov 30, so EMMA publishes a Weekly Run
   // Rate (the $/wk still needed to hit the November goal by Nov 30) and pace is measurable.
@@ -469,7 +469,7 @@
       name: name, booked: booked, target: target, neededPerWeek: runRate,
       avgPace: avgPace, pctTarget: pctTarget, tier: tier, region: region,
       conv: conv, hitGoal: hitGoal, onGoalPace: onGoalPace, convOk: convOk,
-      // Coaching indicator: on pace AND clearing 20% conversion.
+      // Coaching indicator: on pace AND clearing 26% conversion.
       eligible: onGoalPace && convOk
     };
   });
@@ -489,11 +489,11 @@
     return d.conv === null ? "—" : d.conv.toFixed(1) + "%";
   }
   function contestNote(d){
-    if (d.eligible) return "On track — at or ahead of pace and clearing 20% conversion";
+    if (d.eligible) return "On track — at or ahead of pace and clearing 26% conversion";
     if (d.onGoalPace && !d.convOk) return d.conv === null
       ? "On pace — no conversion figure in EMMA, so the gate can't be cleared"
-      : "On pace — conversion under 20%";
-    if (!d.onGoalPace && d.convOk) return "Conversion clears 20% — but behind pace";
+      : "On pace — conversion under 26%";
+    if (!d.onGoalPace && d.convOk) return "Conversion clears 26% — but behind pace";
     return "Behind on both pace and conversion";
   }
 
@@ -596,7 +596,7 @@
     var elig = inRegion.filter(function(d){ return d.eligible; }).length;
     regionSummaryEl.innerHTML = "<b>" + currentRegion + "</b> — " + inRegion.length + " reps · " +
       money(booked) + " booked of " + money(target) + " November goal · <b>" + pct.toFixed(1) + "%</b> to region goal · " +
-      "<b>" + elig + "</b> on pace + 20% conversion";
+      "<b>" + elig + "</b> on pace + 26% conversion";
     regionSummaryEl.classList.add("is-visible");
   }
 
